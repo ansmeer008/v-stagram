@@ -10,9 +10,6 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <p>{{ $store.state.more }}</p>
-  <button @click="$store.dispatch('getData')">vuex로 만드는 더보기 버튼</button>
-
   <Container
     v-bind:feedItem="feedItem"
     :step="step"
@@ -54,7 +51,6 @@ export default {
       axios
         .get(`https://codingapple1.github.io/vue/more${this.countClick}.json`)
         .then((data) => {
-          console.log(data.data);
           this.feedItem.push(data.data);
           this.countClick++;
         })
@@ -93,6 +89,7 @@ export default {
       this.pickedFilter = name;
     });
   },
+  computed: {},
 };
 </script>
 
