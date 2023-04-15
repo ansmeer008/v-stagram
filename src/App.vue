@@ -10,6 +10,9 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
+  <p>{{ $store.state.more }}</p>
+  <button @click="$store.dispatch('getData')">vuex로 만드는 더보기 버튼</button>
+
   <Container
     v-bind:feedItem="feedItem"
     :step="step"
