@@ -6,11 +6,14 @@
   <div v-if="step === 1">
     <div class="upload-image" :style="`background-image:url(${imgUrl})`"></div>
     <div class="filters">
-      <div class="filter-1"></div>
-      <div class="filter-1"></div>
-      <div class="filter-1"></div>
-      <div class="filter-1"></div>
-      <div class="filter-1"></div>
+      <FilterBox
+        v-for="(one, i) in filter"
+        :filtername="one"
+        :key="i"
+        :imgUrl="imgUrl"
+      >
+        {{ one }}
+      </FilterBox>
     </div>
   </div>
 
@@ -26,11 +29,19 @@ write!</textarea
 
 <script>
 import Post from "./Post.vue";
+import FilterBox from "./FilterBox.vue";
+import filter from "../assets/filter";
 
 export default {
   name: "Container",
+  data() {
+    return {
+      filter: filter,
+    };
+  },
   components: {
     Post: Post,
+    FilterBox: FilterBox,
   },
   props: {
     step: Number,
