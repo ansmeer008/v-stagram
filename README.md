@@ -1,24 +1,5 @@
 # v-stagram
 
-## Project setup
-```
-npm install
-```
+https://ansmeer008.github.io/v-stagram/
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Vue.js 학습하며 만든 인스타그램 형식의 미니 프로젝트입니다. 
