@@ -1,6 +1,6 @@
 <template>
   <div v-if="step === 0">
-    <Post v-bind:item="item" v-for="(item, i) in feedItem" :key="i" />
+    <Post v-bind:item="item" v-for="(item, i) in feedItem" :key="i" :i="i" />
   </div>
 
   <div v-if="step === 1">

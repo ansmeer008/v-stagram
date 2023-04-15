@@ -8,12 +8,13 @@
       <span class="profile-name">{{ item.name }}</span>
     </div>
     <div
+      @click="$store.commit('likeUp', i)"
       class="post-body"
       :class="item.filter"
       :style="{ backgroundImage: `url(${item.postImage})` }"
     ></div>
     <div class="post-content">
-      <p>{{ item.likes }} Likes</p>
+      <p>{{ $store.state.likes[i] }} Likes</p>
       <p>
         <strong>{{ item.name }}</strong
         >{{ item.content }}
@@ -28,6 +29,7 @@ export default {
   name: "Post",
   props: {
     item: Object,
+    i: Number,
   },
 };
 </script>
