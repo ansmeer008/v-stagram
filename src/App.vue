@@ -1,15 +1,21 @@
 <template>
   <div class="header">
     <ul class="header-button-left">
-      <li>Cancel</li>
+      <li @click="step = 0">Cancel</li>
     </ul>
     <ul class="header-button-right">
-      <li @click="step++">Next</li>
+      <li v-if="step === 2" @click="publish">Upload</li>
+      <li v-if="step === 1" @click="step++">Next</li>
     </ul>
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <Container v-bind:feedItem="feedItem" :step="step" :imgUrl="imgUrl" />
+  <Container
+    v-bind:feedItem="feedItem"
+    :step="step"
+    :imgUrl="imgUrl"
+    v-on:write="writing = $event"
+  />
   <button v-on:click="more">More...</button>
 
   <div class="footer">
@@ -36,6 +42,7 @@ export default {
       feedItem: data,
       countClick: 0,
       imgUrl: "",
+      writing: "",
     };
   },
   methods: {
@@ -61,6 +68,20 @@ export default {
       this.imgUrl = url;
       console.log(url);
       this.step = 1;
+    },
+    publish() {
+      let newPost = {
+        name: "Anonymous",
+        userImage: "https://placeimg.com/100/100/arch",
+        postImage: this.imgUrl,
+        likes: 0,
+        date: new Date().toDateString(),
+        liked: false,
+        content: this.writing,
+        filter: "perpetua",
+      };
+      this.feedItem.unshift(newPost);
+      this.step = 0;
     },
   },
 };

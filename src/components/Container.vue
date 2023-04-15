@@ -17,7 +17,9 @@
   <div v-if="step === 2">
     <div class="upload-image" :style="`background-image:url(${imgUrl})`"></div>
     <div class="write">
-      <textarea class="write-box">write!</textarea>
+      <textarea @change="$emit('write', $event.target.value)" class="write-box">
+write!</textarea
+      >
     </div>
   </div>
 </template>
