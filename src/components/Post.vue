@@ -9,6 +9,7 @@
     </div>
     <div
       class="post-body"
+      :class="item.filter"
       :style="{ backgroundImage: `url(${item.postImage})` }"
     ></div>
     <div class="post-content">

@@ -1,5 +1,6 @@
 <template>
   <div
+    @click="setFilter(filtername)"
     :class="`filter-item ${filtername}`"
     :style="`background-image:url(${imgUrl})`"
   >
@@ -13,6 +14,11 @@ export default {
   props: {
     imgUrl: String,
     filtername: String,
+  },
+  methods: {
+    setFilter(name) {
+      this.emitter.emit("setfilter", name);
+    },
   },
 };
 </script>

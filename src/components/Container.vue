@@ -4,7 +4,11 @@
   </div>
 
   <div v-if="step === 1">
-    <div class="upload-image" :style="`background-image:url(${imgUrl})`"></div>
+    <div
+      class="upload-image"
+      :class="getFilter"
+      :style="`background-image:url(${imgUrl})`"
+    ></div>
     <div class="filters">
       <FilterBox
         v-for="(one, i) in filter"
@@ -18,7 +22,11 @@
   </div>
 
   <div v-if="step === 2">
-    <div class="upload-image" :style="`background-image:url(${imgUrl})`"></div>
+    <div
+      class="upload-image"
+      :class="getFilter"
+      :style="`background-image:url(${imgUrl})`"
+    ></div>
     <div class="write">
       <textarea @change="$emit('write', $event.target.value)" class="write-box">
 write!</textarea
@@ -37,6 +45,7 @@ export default {
   data() {
     return {
       filter: filter,
+      getFilter: "",
     };
   },
   components: {
@@ -47,6 +56,11 @@ export default {
     step: Number,
     feedItem: Array,
     imgUrl: String,
+  },
+  mounted() {
+    this.emitter.on("setfilter", (name) => {
+      this.getFilter = name;
+    });
   },
 };
 </script>

@@ -43,6 +43,7 @@ export default {
       countClick: 0,
       imgUrl: "",
       writing: "",
+      pickedFilter: "",
     };
   },
   methods: {
@@ -78,11 +79,16 @@ export default {
         date: new Date().toDateString(),
         liked: false,
         content: this.writing,
-        filter: "perpetua",
+        filter: this.pickedFilter,
       };
       this.feedItem.unshift(newPost);
       this.step = 0;
     },
+  },
+  mounted() {
+    this.emitter.on("setfilter", (name) => {
+      this.pickedFilter = name;
+    });
   },
 };
 </script>
